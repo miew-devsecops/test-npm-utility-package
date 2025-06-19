@@ -4,6 +4,33 @@ A simple CLI tool that asks for your favorite color and responds accordingly.
 
 ## Usage
 
+### Prerequisites
+
+Since this package is published to GitHub Packages under the `@miew-devsecops` organization, you'll need proper authentication and permissions:
+
+**Requirements:**
+- Your GitHub account must have access to the `miew-devsecops` organization
+- You need a Personal Access Token with the `read:packages` scope
+- The token must be authorized for the organization (if SSO is enabled)
+
+**Create a Personal Access Token:**
+1. Go to [GitHub Settings → Personal access tokens → Tokens (classic)](https://github.com/settings/tokens)
+2. Click "Generate new token (classic)"
+3. Give it a descriptive name (e.g., "NPM GitHub Packages")
+4. Select the `read:packages` scope (required for downloading packages)
+5. Click "Generate token"
+6. **Important**: If the organization has SSO enabled, authorize your token:
+   - After creating the token, you'll see "Configure SSO" next to it
+   - Click "Configure SSO" and authorize for `miew-devsecops`
+7. Copy the generated token
+8. Configure npm with your token:
+
+```bash
+npm config set //npm.pkg.github.com/:_authToken YOUR_TOKEN_HERE
+```
+
+Replace `YOUR_TOKEN_HERE` with the token you just created.
+
 ### Quick Start (GitHub Packages)
 
 Since this package is published to GitHub Packages, you need to configure npm to use the GitHub registry for scoped packages:
@@ -36,7 +63,10 @@ To include this package as a dependency in your project, first create or update 
 ```ini
 # .npmrc
 @miew-devsecops:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_TOKEN_HERE
 ```
+
+**Note:** Replace `YOUR_TOKEN_HERE` with your actual PAT created in the Prerequisites section above.
 
 Then add it to your `package.json`:
 
@@ -62,6 +92,39 @@ npm run color-tool
 # Or use npx
 npx @miew-devsecops/test-npm-utility-package
 ```
+
+### Troubleshooting
+
+If you get a 403 error when trying to install the package:
+
+1. **Check organization access**: Ensure your GitHub account is a member of the `miew-devsecops` organization
+2. **Verify token scopes**: Your PAT must have `read:packages` scope
+3. **SSO Authorization**: If the organization uses SSO, make sure your token is authorized for the organization
+4. **Package visibility**: Contact the organization admin if the package isn't visible to your account
+
+Common error messages:
+- `403 Forbidden`: Usually means missing organization access or incorrect token scopes
+- `404 Not Found`: Package doesn't exist or you don't have permission to see it
+
+**Check your current token configuration:**
+
+```bash
+# View all npm config settings
+npm config list
+
+# Check specifically for GitHub Packages token
+npm config get //npm.pkg.github.com/:_authToken
+
+# View npm config file location
+npm config get userconfig
+
+# Edit npm config file directly
+npm config edit
+```
+
+**Token storage locations:**
+- **Windows**: `%USERPROFILE%\.npmrc` (e.g., `C:\Users\YourName\.npmrc`)
+- **macOS/Linux**: `~/.npmrc`
 
 ## Development
 
