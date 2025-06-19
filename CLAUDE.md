@@ -17,8 +17,8 @@ npm run lint         # Run ESLint
 
 # Package Management
 npm pack             # Create tarball for testing
-npm publish          # Publish to npm registry
-npx test-npm-utility-package  # Run the published package
+npm publish          # Publish to GitHub Packages registry
+npx @miew-devsecops/test-npm-utility-package  # Run the published package
 ```
 
 ## Project Structure
@@ -60,7 +60,7 @@ Follow conventional commits:
 ### NPX Usage
 The package is designed to be run via npx:
 ```bash
-npx test-npm-utility-package
+npx @miew-devsecops/test-npm-utility-package
 ```
 
 ### TypeScript Setup
@@ -71,7 +71,7 @@ npx test-npm-utility-package
 ### GitHub Actions
 - Self-hosted runners configuration
 - Automated testing on PR
-- Automated publishing to npm on merge to main
+- Automated publishing to GitHub Packages on merge to main
 - Branch protection rules
 
 ## CLI Behavior
@@ -103,7 +103,7 @@ Before any commit:
 - Run on self-hosted GitHub Actions runners
 - Test on multiple Node.js versions
 - Automated security scanning
-- Publish to npm registry on release
+- Publish to GitHub Packages registry on release
 
 ### Branch Protection
 - Require PR reviews for staging/main

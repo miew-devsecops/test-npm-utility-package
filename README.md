@@ -7,7 +7,7 @@ A simple CLI tool that asks for your favorite color and responds accordingly.
 Run the package using npx:
 
 ```bash
-npx test-npm-utility-package
+npx @miew-devsecops/test-npm-utility-package
 ```
 
 The tool will prompt you to enter your favorite color. Valid responses are:
@@ -66,7 +66,7 @@ The project uses GitHub Actions with self-hosted runners for:
   - CLI functionality testing
 
 - **Publish Pipeline**: Runs on push to main/staging
-  - Publishes to npm registry
+  - Publishes to GitHub Packages registry
   - Staging publishes with `beta` tag
   - Main publishes as latest
 

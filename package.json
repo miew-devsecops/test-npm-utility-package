@@ -1,10 +1,10 @@
 {
-  "name": "test-npm-utility-package",
+  "name": "@miew-devsecops/test-npm-utility-package",
   "version": "1.0.0",
   "description": "A simple CLI tool that asks for your favorite color and responds accordingly",
   "main": "dist/index.js",
   "bin": {
-    "test-npm-utility-package": "./dist/index.js"
+    "@miew-devsecops/test-npm-utility-package": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -26,6 +26,9 @@
     "url": "https://github.com/miew-devsecops/test-npm-utility-package/issues"
   },
   "homepage": "https://github.com/miew-devsecops/test-npm-utility-package#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "devDependencies": {
     "@types/inquirer": "^9.0.8",
     "@types/node": "^24.0.3",
