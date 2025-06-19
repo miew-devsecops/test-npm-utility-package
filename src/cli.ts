@@ -8,7 +8,8 @@ export async function runCLI(): Promise<void> {
       message: "What's your favorite color?",
       choices: [
         { name: 'Blue', value: 'blue' },
-        { name: 'Red', value: 'red' }
+        { name: 'Red', value: 'red' },
+        { name: 'Yellow', value: 'yellow' }
       ]
     }
   ]);
@@ -19,5 +20,7 @@ export async function runCLI(): Promise<void> {
     console.log('FCP!');
   } else if (color === 'red') {
     console.log('SLB :/');
+  } else if (color === 'yellow') {
+    console.log('estoril');
   }
 }

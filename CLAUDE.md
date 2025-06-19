@@ -78,11 +78,11 @@ npx @miew-devsecops/test-npm-utility-package
 
 ### User Interaction
 1. Prompts user: "What's your favorite color?"
-2. Accepts input: "blue" or "red"
+2. Accepts selection: "blue", "red", or "yellow"
 3. Returns responses:
    - Blue → "FCP!"
    - Red → "SLB :/"
-   - Other → Error message
+   - Yellow → "estoril"
 
 ### Error Handling
 - Invalid color input
