@@ -4,15 +4,64 @@ A simple CLI tool that asks for your favorite color and responds accordingly.
 
 ## Usage
 
-Run the package using npx:
+### Quick Start (GitHub Packages)
+
+Since this package is published to GitHub Packages, you need to configure npm to use the GitHub registry for scoped packages:
 
 ```bash
+# Configure npm to use GitHub Packages for @miew-devsecops scope
+npm config set @miew-devsecops:registry https://npm.pkg.github.com
+
+# Run the package using npx
 npx @miew-devsecops/test-npm-utility-package
 ```
 
-The tool will prompt you to enter your favorite color. Valid responses are:
-- `blue` → Returns "FCP!"
-- `red` → Returns "SLB :/"
+### Alternative: One-time usage
+
+You can also run it directly by specifying the registry:
+
+```bash
+npx --registry https://npm.pkg.github.com @miew-devsecops/test-npm-utility-package
+```
+
+The tool will present a selector with color options:
+- Select `Blue` → Returns "FCP!"
+- Select `Red` → Returns "SLB :/"
+- Select `Yellow` → Returns "estoril"
+
+### Installing in a Project
+
+To include this package as a dependency in your project, first create or update your `.npmrc` file to configure the GitHub Packages registry:
+
+```ini
+# .npmrc
+@miew-devsecops:registry=https://npm.pkg.github.com
+```
+
+Then add it to your `package.json`:
+
+```json
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "dependencies": {
+    "@miew-devsecops/test-npm-utility-package": "^1.0.0"
+  },
+  "scripts": {
+    "color-tool": "npx @miew-devsecops/test-npm-utility-package"
+  }
+}
+```
+
+After running `npm install`, you can use it in your project:
+
+```bash
+# Run directly
+npm run color-tool
+
+# Or use npx
+npx @miew-devsecops/test-npm-utility-package
+```
 
 ## Development
 
