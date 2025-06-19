@@ -3,23 +3,17 @@ import inquirer from 'inquirer';
 export async function runCLI(): Promise<void> {
   const answers = await inquirer.prompt([
     {
-      type: 'input',
+      type: 'list',
       name: 'favoriteColor',
       message: "What's your favorite color?",
-      validate: (input: string) => {
-        const trimmed = input.trim().toLowerCase();
-        if (!trimmed) {
-          return 'Please enter a color';
-        }
-        if (trimmed !== 'blue' && trimmed !== 'red') {
-          return 'Please enter either "blue" or "red"';
-        }
-        return true;
-      }
+      choices: [
+        { name: 'Blue', value: 'blue' },
+        { name: 'Red', value: 'red' }
+      ]
     }
   ]);
 
-  const color = answers.favoriteColor.trim().toLowerCase();
+  const color = answers.favoriteColor;
   
   if (color === 'blue') {
     console.log('FCP!');
