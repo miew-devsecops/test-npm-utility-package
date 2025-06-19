@@ -1,0 +1,42 @@
+{
+  "name": "test-npm-utility-package",
+  "version": "1.0.0",
+  "description": "A simple CLI tool that asks for your favorite color and responds accordingly",
+  "main": "dist/index.js",
+  "bin": {
+    "test-npm-utility-package": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "start": "node dist/index.js",
+    "lint": "eslint src/**/*.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miew-devsecops/test-npm-utility-package.git"
+  },
+  "keywords": ["cli", "npx", "color", "interactive", "utility"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/miew-devsecops/test-npm-utility-package/issues"
+  },
+  "homepage": "https://github.com/miew-devsecops/test-npm-utility-package#readme",
+  "devDependencies": {
+    "@types/inquirer": "^9.0.8",
+    "@types/node": "^24.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
+    "@typescript-eslint/parser": "^8.34.1",
+    "eslint": "^9.29.0",
+    "prettier": "^3.5.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "inquirer": "^12.6.3"
+  }
+}

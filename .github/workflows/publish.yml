@@ -1,0 +1,75 @@
+name: Publish to NPM
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: self-hosted
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        registry-url: 'https://registry.npmjs.org'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run linter
+      run: npm run lint
+    
+    - name: Build project
+      run: npm run build
+    
+    - name: Test CLI functionality
+      run: |
+        echo "blue" | npm run start
+        echo "red" | npm run start
+    
+    - name: Publish to npm
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-staging:
+    runs-on: self-hosted
+    if: github.ref == 'refs/heads/staging'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        registry-url: 'https://registry.npmjs.org'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run linter
+      run: npm run lint
+    
+    - name: Build project
+      run: npm run build
+    
+    - name: Test CLI functionality
+      run: |
+        echo "blue" | npm run start
+        echo "red" | npm run start
+    
+    - name: Publish to npm with beta tag
+      run: npm publish --tag beta
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
