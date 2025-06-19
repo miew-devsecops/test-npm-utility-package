@@ -65,7 +65,7 @@ npx @miew-devsecops/test-npm-utility-package
 
 ### TypeScript Setup
 - Strict mode enabled
-- ES2020 target
+- ES2024 target
 - CommonJS modules for Node.js compatibility
 
 ### GitHub Actions
